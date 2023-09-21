@@ -7,10 +7,10 @@ import { Query } from 'types/api/queryBuilder/queryBuilderData';
 export type PayloadProps = Dashboard[];
 
 export const VariableQueryTypeArr = ['QUERY', 'TEXTBOX', 'CUSTOM'] as const;
-export type TVariableQueryType = typeof VariableQueryTypeArr[number];
+export type TVariableQueryType = (typeof VariableQueryTypeArr)[number];
 
 export const VariableSortTypeArr = ['DISABLED', 'ASC', 'DESC'] as const;
-export type TSortVariableValuesType = typeof VariableSortTypeArr[number];
+export type TSortVariableValuesType = (typeof VariableSortTypeArr)[number];
 
 export interface IDashboardVariable {
 	name?: string; // key will be the source of truth
@@ -46,6 +46,7 @@ export interface Dashboard {
 }
 
 export interface DashboardData {
+	uuid?: string;
 	description?: string;
 	tags?: string[];
 	name?: string;
