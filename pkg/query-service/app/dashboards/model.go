@@ -139,7 +139,11 @@ func CreateDashboard(data map[string]interface{}, fm interfaces.FeatureLookup) (
 	dash.CreatedAt = time.Now()
 	dash.UpdatedAt = time.Now()
 	dash.UpdateSlug()
+
 	dash.Uuid = uuid.New().String()
+  if data["uuid"] != nil {
+    dash.Uuid = data["uuid"].(string)
+  } 
 
 	map_data, err := json.Marshal(dash.Data)
 	if err != nil {
